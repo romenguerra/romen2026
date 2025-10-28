@@ -28,9 +28,17 @@
 
     $catalogo_cine = new CatalogoCine();
 
-    echo '<pre>';
-    var_dump($catalogo_cine->mostrar());
 
+    $peliculas = $catalogo_cine->mostrar();
+
+    //$peliculas['similar']
+
+
+    foreach($peliculas['similar']["results"] as $tipo => $datos)
+    {
+        echo $tipo;
+        echo $datos;
+    }
 
 
 
