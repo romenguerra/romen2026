@@ -58,13 +58,8 @@ function leer($conexion, $nombre){
         // Verificar si encontró registros
         if (mysqli_num_rows($resultado) > 0) {
             // Mostrar los datos
-            while ($fila = mysqli_fetch_assoc($resultado)) {
-                echo "ID: " . $fila['id'] . "<br>";
-                echo "Nombre: " . $fila['nombre'] . "<br>";
-                echo "Email: " . $fila['email'] . "<br>";
-                echo "Edad: " . $fila['edad'] . "<br>";
-                echo "-------------------<br>";
-            }
+            mostrarResultadosEnTabla($resultado);
+            
         } else {
             echo "No se encontró ningún usuario con ese nombre";
         }
@@ -84,6 +79,50 @@ function actualizarUsuario($conexion, $nombre, $correo, $edad){
         echo "ERROR: " . mysqli_error($conexion);
     }
 }
+
+function mostrarResultadosEnTabla($resultado){
+    echo "<h3>Resultados:</h3>";
+    echo "<table border='1' style='border-collapse: collapse; width: 100%;'>";
+    echo "<thead>";
+    echo "<tr style='background-color: #f2f2f2;'>";
+    echo "<th style='padding: 8px; text-align: left;'>ID</th>";
+    echo "<th style='padding: 8px; text-align: left;'>Nombre</th>";
+    echo "<th style='padding: 8px; text-align: left;'>Email</th>";
+    echo "<th style='padding: 8px; text-align: left;'>Edad</th>";
+    echo "</tr>";
+    echo "</thead>";
+    echo "<tbody>";
+
+
+    while ($fila = mysqli_fetch_assoc($resultado)) {
+        echo "<tr>";
+        echo "<td style='padding: 8px;'>" . $fila['id'] . "</td>";
+        echo "<td style='padding: 8px;'>" . $fila['nombre'] . "</td>";
+        echo "<td style='padding: 8px;'>" . $fila['email'] . "</td>";
+        echo "<td style='padding: 8px;'>" . $fila['edad'] . "</td>";
+        echo "</tr>";
+    }
+    
+    echo "</tbody>";
+    echo "</table>";
+}
+
+function leerTodosUsuarios($conexion) {
+    $leer = "SELECT * FROM usuarios";
+    
+    $resultado = mysqli_query($conexion, $leer);
+    
+    if ($resultado){
+        if (mysqli_num_rows($resultado) > 0) {
+            mostrarResultadosEnTabla($resultado);
+        } else {
+            echo "No hay usuarios registrados";
+        }
+    } else {
+        echo "ERROR: " . mysqli_error($conexion);
+    }
+}
+
 
 
 
@@ -105,45 +144,11 @@ if ($accion === 'delete'){
 }
 if ($accion === 'select'){
     if (empty($nombre)){
-        echo "ERROR: El campo Usuario es obligatorio";
+        leerTodosUsuarios($conexion);
     } else {
         leer($conexion, $nombre);
     }
 }
-
-// Inicializamos mensaje vacío
-// $mensaje = '';
-
-// Si se envió el formulario
-// if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-//     $nombre = isset($_POST['usuario']) ? trim($_POST['usuario']) : '';
-//     $correo = isset($_POST['email']) ? trim($_POST['email']) : '';
-//     $edad = isset($_POST['edad']) && $_POST['edad'] !== '' ? (int)$_POST['edad'] : NULL;
-
-//     if ($nombre === '' || $correo === '') {
-//         $mensaje = "Por favor, completa todos los campos obligatorios (Usuario y Correo).";
-//     } else {
-//         // MEJORA: Usar consultas preparadas para prevenir SQL injection
-//         $sql = "INSERT INTO usuarios (nombre, email, edad) VALUES (?, ?, ?)";
-//         $stmt = mysqli_prepare($conexion, $sql);
-        
-//         if ($stmt) {
-//             mysqli_stmt_bind_param($stmt, "ssi", $nombre, $correo, $edad);
-            
-//             if (mysqli_stmt_execute($stmt)) {
-//                 $mensaje = "Nuevo registro creado exitosamente";
-//                 // Limpiar los campos después de un registro exitoso
-//                 $nombre = $correo = '';
-//                 $edad = NULL;
-//             } else {
-//                 $mensaje = "Error: " . mysqli_error($conexion);
-//             }
-//             mysqli_stmt_close($stmt);
-//         } else {
-//             $mensaje = "Error al preparar la consulta: " . mysqli_error($conexion);
-//         }
-//     }
-// }
 
 ?>
 

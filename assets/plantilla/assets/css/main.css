@@ -9,6 +9,32 @@ html {
   scroll-behavior: smooth;
 }
 
+
+.header {
+  width: 100%;
+  background: #fff; /* Cambiar de transparent a color sólido */
+  position: fixed; /* Cambiar de absolute a fixed */
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 1000; /* Asegurar que esté por encima de otros elementos */
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1); /* Opcional: añadir sombra */
+}
+
+/* Eliminar o modificar la clase .sticky ya que ahora siempre será fija */
+.header.sticky {
+  position: fixed;
+  background: #fff;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Ajustar el padding del hero area para compensar la navbar fija */
+.hero-area {
+  position: relative;
+  padding: 250px 0 120px 0; /* Aumentar el padding-top */
+  background: #ff6b81;
+}
+
 body {
   font-family: "Inter", sans-serif;
   font-weight: normal;
@@ -2950,4 +2976,155 @@ ol {
 .footer .footer-newsletter .newsletter-form .button .btn:hover {
   color: #ff6b81;
   background-color: #fff;
+}
+
+
+/*======================================
+    Navbar Fixed - No Color Change
+========================================*/
+.navbar-area {
+    position: fixed !important;
+    top: 0 !important;
+    width: 100% !important;
+    z-index: 1000 !important;
+    background: #fff !important;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1) !important;
+    transition: none !important;
+}
+
+.navbar-area .navbar-brand img {
+    width: 160px;
+}
+
+/* Mantener colores consistentes */
+.navbar-area .navbar-nav .nav-item a {
+    color: #081828 !important;
+    font-weight: 600;
+}
+
+.navbar-area .navbar-nav .nav-item a:hover {
+    color: #ff6b81 !important;
+}
+
+.navbar-area .mobile-menu-btn .toggler-icon {
+    background-color: #081828 !important;
+}
+
+/* Ajustar el padding de las secciones para compensar la navbar fija */
+.hero-area {
+    padding: 200px 0 120px 0 !important;
+}
+
+.breadcrumbs {
+    padding-top: 160px !important;
+}
+
+.section {
+    padding-top: 120px !important;
+}
+
+/* Ocultar completamente la funcionalidad sticky */
+.navbar-area.sticky {
+    display: none !important;
+}
+
+/* Botones en navbar siempre con color consistente */
+.header .button .btn {
+    background-color: #ff6b81 !important;
+    border: 2px solid #ff6b81 !important;
+    color: #fff !important;
+    padding: 12px 30px !important;
+}
+
+.header .button .btn:hover {
+    background-color: #081828 !important;
+    border-color: #081828 !important;
+    color: #fff !important;
+}
+
+/*======================================
+    Navbar Fija - Colores Permanentes
+========================================*/
+.navbar-area {
+    position: fixed !important;
+    top: 0 !important;
+    width: 100% !important;
+    z-index: 1000 !important;
+    background: #fff !important; /* Fondo blanco permanente */
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1) !important;
+    padding: 0 !important;
+}
+
+/* Logo siempre negro/color original */
+.navbar-area .navbar-brand img {
+    width: 160px;
+}
+
+/* Texto de navegación siempre negro */
+.navbar-area .navbar-nav .nav-item a {
+    color: #081828 !important; /* Negro permanente */
+    font-weight: 600;
+    padding: 35px 0 !important;
+}
+
+.navbar-area .navbar-nav .nav-item a:hover {
+    color: #ff6b81 !important;
+}
+
+.navbar-area .navbar-nav .nav-item a.active {
+    color: #ff6b81 !important;
+}
+
+/* Iconos del menú móvil en negro */
+.navbar-area .mobile-menu-btn .toggler-icon {
+    background-color: #081828 !important; /* Negro permanente */
+}
+
+/* Botones en la navbar */
+.header .button .btn {
+    background-color: #ff6b81 !important;
+    border: 2px solid #ff6b81 !important;
+    color: #fff !important;
+    padding: 12px 30px !important;
+}
+
+.header .button .btn:hover {
+    background-color: #081828 !important;
+    border-color: #081828 !important;
+}
+
+/* Desactivar completamente los efectos sticky */
+.navbar-area.sticky {
+    display: none !important;
+}
+
+.sticky {
+    display: none !important;
+}
+
+/* Ajustar padding de las secciones para la navbar fija */
+.hero-area {
+    padding: 200px 0 120px 0 !important;
+}
+
+.breadcrumbs {
+    padding-top: 160px !important;
+    padding-bottom: 100px !important;
+}
+
+.section {
+    padding-top: 120px !important;
+}
+
+/* Asegurar que el sub-menú también tenga colores correctos */
+.navbar-nav .nav-item .sub-menu {
+    background: #fff !important;
+}
+
+.navbar-nav .nav-item .sub-menu .nav-item a {
+    color: #888 !important;
+}
+
+.navbar-nav .nav-item .sub-menu .nav-item a:hover {
+    color: #ff6b81 !important;
 }

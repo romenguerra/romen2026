@@ -14,7 +14,7 @@
                 <head>
                     <meta charset=\"utf-8\" />
                     <meta http-equiv=\"x-ua-compatible\" content=\"ie=edge\" />
-                    <title>Appvilla - Creative Landing Page HTML Template.</title>
+                    <title>Biblioteca</title>
                     <meta name=\"description\" content=\"\" />
                     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />
                     <link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"assets/plantilla/assets/images/favicon.svg\" />
@@ -45,8 +45,7 @@
                                         <!-- Start Navbar -->
                                         <nav class=\"navbar navbar-expand-lg\">
                                             <a class=\"navbar-brand\" href=\"index.html\">
-                                                <img src=\"assets/plantilla/assets/images/logo/white-logo.svg\" alt=\"Logo\">
-                                            </a>
+                                                <img src=\"/romen2026/assets/plantilla/assets/images/logo/logo.svg\" alt=\"Logo\">                                            </a>
                                             <button class=\"navbar-toggler mobile-menu-btn\" type=\"button\" data-bs-toggle=\"collapse\"
                                                 data-bs-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\"
                                                 aria-expanded=\"false\" aria-label=\"Toggle navigation\">
@@ -119,7 +118,7 @@
                                 <div class=\"single-footer f-about\">
                                     <div class=\"logo\">
                                         <a href=\"index.html\">
-                                            <img src=\"assets/images/logo/white-logo.svg\" alt=\"#\">
+                                            <img src=\"assets/plantilla/assets/images/logo/white-logo.svg\" alt=\"#\">
                                         </a>
                                     </div>
                                     <p>Making the world a better place through constructing elegant hierarchies.</p>
@@ -210,12 +209,12 @@
             </a>
 
             <!-- ========================= JS here ========================= -->
-            <script src=\"assets/js/bootstrap.min.js\"></script>
-            <script src=\"assets/js/wow.min.js\"></script>
-            <script src=\"assets/js/tiny-slider.js\"></script>
-            <script src=\"assets/js/glightbox.min.js\"></script>
-            <script src=\"assets/js/count-up.min.js\"></script>
-            <script src=\"assets/js/main.js\"></script>
+            <script src=\"assets/plantilla/assets/js/bootstrap.min.js\"></script>
+            <script src=\"assets/plantilla/assets/js/wow.min.js\"></script>
+            <script src=\"assets/plantilla/assets/js/tiny-slider.js\"></script>
+            <script src=\"assets/plantilla/assets/js/glightbox.min.js\"></script>
+            <script src=\"assets/plantilla/assets/js/count-up.min.js\"></script>
+            <script src=\"assets/plantilla/assets/js/main.js\"></script>
             <script type=\"text/javascript\">
 
                 //====== counter up 
