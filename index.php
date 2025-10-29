@@ -1,193 +1,331 @@
-<?php
-    require "includes/general.php";
 
-    echo Template::header('Biblioteca');
-    echo Template::nav();
-?>
+<body>
+    <!--[if lte IE 9]>
+      <p class="browserupgrade">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
+        your experience and security.
+      </p>
+    <![endif]-->
 
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-icon">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <!-- /End Preloader -->
 
-        <!-- Masthead-->
-        <header class="masthead bg-primary text-white text-center">
-            <div class="container d-flex align-items-center flex-column">
-                <!-- Masthead Avatar Image-->
-                <img class="masthead-avatar mb-5" src="/assets/plantilla/assets/img/avataaars.svg" alt="..." />
-                <!-- Masthead Heading-->
-                <h1 class="masthead-heading text-uppercase mb-0">Start Bootstrap</h1>
-                <!-- Icon Divider-->
-                <div class="divider-custom divider-light">
-                    <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                    <div class="divider-custom-line"></div>
+    <!-- Start Header Area -->
+
+    <!-- End Header Area -->
+
+    <!-- Start Hero Area -->
+    <section id="home" class="hero-area">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 col-md-12 col-12">
+                    <div class="hero-content">
+                        <h1 class="wow fadeInLeft" data-wow-delay=".4s">A powerful app for your business.</h1>
+                        <p class="wow fadeInLeft" data-wow-delay=".6s">From open source to pro services, Piqes helps you
+                            to build, deploy, test, and monitor apps.</p>
+                        <div class="button wow fadeInLeft" data-wow-delay=".8s">
+                            <a href="javascript:void(0)" class="btn"><i class="lni lni-apple"></i> App Store</a>
+                            <a href="javascript:void(0)" class="btn btn-alt"><i class="lni lni-play-store"></i> Google
+                                Play</a>
+                        </div>
+                    </div>
                 </div>
-                <!-- Masthead Subheading-->
-                <p class="masthead-subheading font-weight-light mb-0">Graphic Artist - Web Designer - Illustrator</p>
-            </div>
-        </header>
-        <!-- Portfolio Section-->
-        <section class="page-section portfolio" id="portfolio">
-            <div class="container">
-                <!-- Portfolio Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Portfolio</h2>
-                <!-- Icon Divider-->
-                <div class="divider-custom">
-                    <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                    <div class="divider-custom-line"></div>
-                </div>
-                <!-- Portfolio Grid Items-->
-                <div class="row justify-content-center">
-                    <!-- Portfolio Item 1-->
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                            </div>
-                            <img class="img-fluid" src="/assets/plantilla/assets/img/portfolio/cabin.png" alt="..." />
-                        </div>
-                    </div>
-                    <!-- Portfolio Item 2-->
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal2">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                            </div>
-                            <img class="img-fluid" src="/assets/plantilla/assets/img/portfolio/cake.png" alt="..." />
-                        </div>
-                    </div>
-                    <!-- Portfolio Item 3-->
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal3">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                            </div>
-                            <img class="img-fluid" src="/assets/plantilla/assets/img/portfolio/circus.png" alt="..." />
-                        </div>
-                    </div>
-                    <!-- Portfolio Item 4-->
-                    <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                            </div>
-                            <img class="img-fluid" src="/assets/plantilla/assets/img/portfolio/game.png" alt="..." />
-                        </div>
-                    </div>
-                    <!-- Portfolio Item 5-->
-                    <div class="col-md-6 col-lg-4 mb-5 mb-md-0">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal5">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                            </div>
-                            <img class="img-fluid" src="/assets/plantilla/assets/img/portfolio/safe.png" alt="..." />
-                        </div>
-                    </div>
-                    <!-- Portfolio Item 6-->
-                    <div class="col-md-6 col-lg-4">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal6">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                            </div>
-                            <img class="img-fluid" src="/assets/plantilla/assets/img/portfolio/submarine.png" alt="..." />
-                        </div>
+                <div class="col-lg-7 col-md-12 col-12">
+                    <div class="hero-image wow fadeInRight" data-wow-delay=".4s">
+                        <img src="assets/images/hero/phone.png" alt="#">
                     </div>
                 </div>
             </div>
-        </section>
-        <!-- About Section-->
-        <section class="page-section bg-primary text-white mb-0" id="about">
-            <div class="container">
-                <!-- About Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-white">About</h2>
-                <!-- Icon Divider-->
-                <div class="divider-custom divider-light">
-                    <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                    <div class="divider-custom-line"></div>
-                </div>
-                <!-- About Section Content-->
-                <div class="row">
-                    <div class="col-lg-4 ms-auto"><p class="lead">Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the complete source files including HTML, CSS, and JavaScript as well as optional SASS stylesheets for easy customization.</p></div>
-                    <div class="col-lg-4 me-auto"><p class="lead">You can create your own custom avatar for the masthead, change the icon in the dividers, and add your email address to the contact form to make it fully functional!</p></div>
-                </div>
-                <!-- About Section Button-->
-                <div class="text-center mt-4">
-                    <a class="btn btn-xl btn-outline-light" href="https://startbootstrap.com/theme/freelancer/">
-                        <i class="fas fa-download me-2"></i>
-                        Free Download!
-                    </a>
-                </div>
-            </div>
-        </section>
-        <!-- Contact Section-->
-        <section class="page-section" id="contact">
-            <div class="container">
-                <!-- Contact Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Contact Me</h2>
-                <!-- Icon Divider-->
-                <div class="divider-custom">
-                    <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                    <div class="divider-custom-line"></div>
-                </div>
-                <!-- Contact Section Form-->
-                <div class="row justify-content-center">
-                    <div class="col-lg-8 col-xl-7">
-                        <!-- * * * * * * * * * * * * * * *-->
-                        <!-- * * SB Forms Contact Form * *-->
-                        <!-- * * * * * * * * * * * * * * *-->
-                        <!-- This form is pre-integrated with SB Forms.-->
-                        <!-- To make this form functional, sign up at-->
-                        <!-- https://startbootstrap.com/solution/contact-forms-->
-                        <!-- to get an API token!-->
-                        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-                            <!-- Name input-->
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
-                                <label for="name">Full name</label>
-                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
-                            </div>
-                            <!-- Email address input-->
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
-                                <label for="email">Email address</label>
-                                <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                                <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
-                            </div>
-                            <!-- Phone number input-->
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
-                                <label for="phone">Phone number</label>
-                                <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
-                            </div>
-                            <!-- Message input-->
-                            <div class="form-floating mb-3">
-                                <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
-                                <label for="message">Message</label>
-                                <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
-                            </div>
-                            <!-- Submit success message-->
-                            <!---->
-                            <!-- This is what your users will see when the form-->
-                            <!-- has successfully submitted-->
-                            <div class="d-none" id="submitSuccessMessage">
-                                <div class="text-center mb-3">
-                                    <div class="fw-bolder">Form submission successful!</div>
-                                    To activate this form, sign up at
-                                    <br />
-                                    <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                                </div>
-                            </div>
-                            <!-- Submit error message-->
-                            <!---->
-                            <!-- This is what your users will see when there is-->
-                            <!-- an error submitting the form-->
-                            <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
-                            <!-- Submit Button-->
-                            <button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit">Send</button>
-                        </form>
+        </div>
+    </section>
+    <!-- End Hero Area -->
+
+    <!-- Start Features Area -->
+    <section id="features" class="features section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title">
+                        <h3 class="wow zoomIn" data-wow-delay=".2s">Features</h3>
+                        <h2 class="wow fadeInUp" data-wow-delay=".4s">Your Experience Gets Better And Better Over Time.
+                        </h2>
+                        <p class="wow fadeInUp" data-wow-delay=".6s">There are many variations of passages of Lorem
+                            Ipsum available, but the majority have suffered alteration in some form.</p>
                     </div>
                 </div>
             </div>
-        </section>
-    
-<?php echo Template::footer(); ?>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-12">
+                    <!-- Start Single Feature -->
+                    <div class="single-feature wow fadeInUp" data-wow-delay=".2s">
+                        <i class="lni lni-cloud-upload"></i>
+                        <h3>Push to Deploy</h3>
+                        <p>It is a long established fact that a reader will be distracted by the readable content of a
+                            page at its layout.</p>
+                    </div>
+                    <!-- End Single Feature -->
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <!-- Start Single Feature -->
+                    <div class="single-feature wow fadeInUp" data-wow-delay=".4s">
+                        <i class="lni lni-lock"></i>
+                        <h3>SSL Certificates</h3>
+                        <p>It is a long established fact that a reader will be distracted by the readable content of a
+                            page at its layout.</p>
+                    </div>
+                    <!-- End Single Feature -->
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <!-- Start Single Feature -->
+                    <div class="single-feature wow fadeInUp" data-wow-delay=".6s">
+                        <i class="lni lni-reload"></i>
+                        <h3>Simple Queues</h3>
+                        <p>It is a long established fact that a reader will be distracted by the readable content of a
+                            page at its layout.</p>
+                    </div>
+                    <!-- End Single Feature -->
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <!-- Start Single Feature -->
+                    <div class="single-feature wow fadeInUp" data-wow-delay=".2s">
+                        <i class="lni lni-shield"></i>
+                        <h3>Advanced Security</h3>
+                        <p>It is a long established fact that a reader will be distracted by the readable content of a
+                            page at its layout.</p>
+                    </div>
+                    <!-- End Single Feature -->
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <!-- Start Single Feature -->
+                    <div class="single-feature wow fadeInUp" data-wow-delay=".4s">
+                        <i class="lni lni-cog"></i>
+                        <h3>Powerful API</h3>
+                        <p>It is a long established fact that a reader will be distracted by the readable content of a
+                            page at its layout.</p>
+                    </div>
+                    <!-- End Single Feature -->
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <!-- Start Single Feature -->
+                    <div class="single-feature wow fadeInUp" data-wow-delay=".6s">
+                        <i class="lni lni-layers"></i>
+                        <h3>Database Backups</h3>
+                        <p>It is a long established fact that a reader will be distracted by the readable content of a
+                            page at its layout.</p>
+                    </div>
+                    <!-- End Single Feature -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Features Area -->
+
+    <!-- Start Achievement Area -->
+    <section class="our-achievement section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1 col-md-12 col-12">
+                    <div class="title">
+                        <h2>Trusted by developers from over 80 planets</h2>
+                        <p>There are many variations of passages of Lorem Ipsum available, but the majority.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2 col-md-12 col-12">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-12">
+                            <div class="single-achievement wow fadeInUp" data-wow-delay=".2s">
+                                <h3 class="counter"><span id="secondo1" class="countup" cup-end="100">100</span>%</h3>
+                                <p>satisfaction</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-12">
+                            <div class="single-achievement wow fadeInUp" data-wow-delay=".4s">
+                                <h3 class="counter"><span id="secondo2" class="countup" cup-end="120">120</span>K</h3>
+                                <p>Happy Users</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-12">
+                            <div class="single-achievement wow fadeInUp" data-wow-delay=".6s">
+                                <h3 class="counter"><span id="secondo3" class="countup" cup-end="125">125</span>k+</h3>
+                                <p>Downloads</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Achievement Area -->
+
+    <!-- Start Pricing Table Area -->
+    <section id="pricing" class="pricing-table section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title">
+                        <h3 class="wow zoomIn" data-wow-delay=".2s">pricing</h3>
+                        <h2 class="wow fadeInUp" data-wow-delay=".4s">Pricing Plan</h2>
+                        <p class="wow fadeInUp" data-wow-delay=".6s">There are many variations of passages of Lorem
+                            Ipsum available, but the majority have suffered alteration in some form.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-12">
+                    <!-- Single Table -->
+                    <div class="single-table wow fadeInUp" data-wow-delay=".2s">
+                        <!-- Table Head -->
+                        <div class="table-head">
+                            <h4 class="title">Hobby</h4>
+                            <p>All the basics for starting a new business</p>
+                            <div class="price">
+                                <h2 class="amount">$12<span class="duration">/mo</span></h2>
+                            </div>
+                            <div class="button">
+                                <a href="javascript:void(0)" class="btn">Buy Hobby</a>
+                            </div>
+                        </div>
+                        <!-- End Table Head -->
+                        <!-- Start Table Content -->
+                        <div class="table-content">
+                            <h4 class="middle-title">What's Included</h4>
+                            <!-- Table List -->
+                            <ul class="table-list">
+                                <li><i class="lni lni-checkmark-circle"></i> Cras justo odio.</li>
+                                <li><i class="lni lni-checkmark-circle"></i> Dapibus ac facilisis in.</li>
+                                <li><i class="lni lni-checkmark-circle"></i> Morbi leo risus.</li>
+                                <li><i class="lni lni-checkmark-circle"></i> Potenti felis, in cras ligula.</li>
+                            </ul>
+                            <!-- End Table List -->
+                        </div>
+                        <!-- End Table Content -->
+                    </div>
+                    <!-- End Single Table-->
+                </div>
+                <div class="col-lg-3 col-md-6 col-12">
+                    <!-- Single Table -->
+                    <div class="single-table wow fadeInUp" data-wow-delay=".4s">
+                        <!-- Table Head -->
+                        <div class="table-head">
+                            <h4 class="title">Freelancer</h4>
+                            <p>All the basics for starting a new business</p>
+                            <div class="price">
+                                <h2 class="amount">$24<span class="duration">/mo</span></h2>
+                            </div>
+                            <div class="button">
+                                <a href="javascript:void(0)" class="btn">Buy Freelancer</a>
+                            </div>
+                        </div>
+                        <!-- End Table Head -->
+                        <!-- Start Table Content -->
+                        <div class="table-content">
+                            <h4 class="middle-title">What's Included</h4>
+                            <!-- Table List -->
+                            <ul class="table-list">
+                                <li><i class="lni lni-checkmark-circle"></i> Cras justo odio.</li>
+                                <li><i class="lni lni-checkmark-circle"></i> Dapibus ac facilisis in.</li>
+                                <li><i class="lni lni-checkmark-circle"></i> Morbi leo risus.</li>
+                                <li><i class="lni lni-checkmark-circle"></i> Potenti felis, in cras ligula.</li>
+                            </ul>
+                            <!-- End Table List -->
+                        </div>
+                        <!-- End Table Content -->
+                    </div>
+                    <!-- End Single Table-->
+                </div>
+                <div class="col-lg-3 col-md-6 col-12">
+                    <!-- Single Table -->
+                    <div class="single-table wow fadeInUp" data-wow-delay=".6s">
+                        <!-- Table Head -->
+                        <div class="table-head">
+                            <h4 class="title">Startup</h4>
+                            <p>All the basics for starting a new business</p>
+                            <div class="price">
+                                <h2 class="amount">$32<span class="duration">/mo</span></h2>
+                            </div>
+                            <div class="button">
+                                <a href="javascript:void(0)" class="btn">Buy Startup</a>
+                            </div>
+                        </div>
+                        <!-- End Table Head -->
+                        <!-- Start Table Content -->
+                        <div class="table-content">
+                            <h4 class="middle-title">What's Included</h4>
+                            <!-- Table List -->
+                            <ul class="table-list">
+                                <li><i class="lni lni-checkmark-circle"></i> Cras justo odio.</li>
+                                <li><i class="lni lni-checkmark-circle"></i> Dapibus ac facilisis in.</li>
+                                <li><i class="lni lni-checkmark-circle"></i> Morbi leo risus.</li>
+                                <li><i class="lni lni-checkmark-circle"></i> Potenti felis, in cras ligula.</li>
+                            </ul>
+                            <!-- End Table List -->
+                        </div>
+                        <!-- End Table Content -->
+                    </div>
+                    <!-- End Single Table-->
+                </div>
+                <div class="col-lg-3 col-md-6 col-12">
+                    <!-- Single Table -->
+                    <div class="single-table wow fadeInUp" data-wow-delay=".8s">
+                        <!-- Table Head -->
+                        <div class="table-head">
+                            <h4 class="title">Enterprise</h4>
+                            <p>All the basics for starting a new business</p>
+                            <div class="price">
+                                <h2 class="amount">$48<span class="duration">/mo</span></h2>
+                            </div>
+                            <div class="button">
+                                <a href="javascript:void(0)" class="btn">Buy Enterprise</a>
+                            </div>
+                        </div>
+                        <!-- End Table Head -->
+                        <!-- Start Table Content -->
+                        <div class="table-content">
+                            <h4 class="middle-title">What's Included</h4>
+                            <!-- Table List -->
+                            <ul class="table-list">
+                                <li><i class="lni lni-checkmark-circle"></i> Cras justo odio.</li>
+                                <li><i class="lni lni-checkmark-circle"></i> Dapibus ac facilisis in.</li>
+                                <li><i class="lni lni-checkmark-circle"></i> Morbi leo risus.</li>
+                                <li><i class="lni lni-checkmark-circle"></i> Potenti felis, in cras ligula.</li>
+                            </ul>
+                            <!-- End Table List -->
+                        </div>
+                        <!-- End Table Content -->
+                    </div>
+                    <!-- End Single Table-->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/ End Pricing Table Area -->
+
+    <!-- Start Call To Action Area -->
+    <section class="section call-action">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2 col-md-12 col-12">
+                    <div class="cta-content">
+                        <h2 class="wow fadeInUp" data-wow-delay=".2s">You are using free Lite <br>Version of Appvilla
+                        </h2>
+                        <p class="wow fadeInUp" data-wow-delay=".4s">Please, purchase full version of the template to
+                            get all pages, features and commercial license.</p>
+                        <div class="button wow fadeInUp" data-wow-delay=".6s">
+                            <a href="javascript:void(0)" class="btn">Purchase Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
