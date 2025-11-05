@@ -149,6 +149,13 @@ if ($accion === 'select'){
         leer($conexion, $nombre);
     }
 }
+if ($accion === 'update'){
+    if (empty($nombre)){
+        echo "ERROR: El campo usuario es obligatorio";
+    } else {
+        actualizarUsuario($conexion, $nombre, $correo, $edad);
+    }
+}
 
 ?>
 
