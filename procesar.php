@@ -46,7 +46,7 @@
         $disabled = ' disabled ';
     }
 
-    require "./formulario2.php";
+    require "./formulario.php";
 
 
 ?>

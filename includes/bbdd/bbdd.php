@@ -13,7 +13,7 @@
         private function __construct()
         {
             $this->conexion = new mysqli(
-                $this->host
+                 $this->host
                 ,$this->usuario
                 ,$this->password
                 ,$this->baseDatos
