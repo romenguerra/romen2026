@@ -1,3 +1,11 @@
 RewriteEngine On
 
-RewriteRule ^usuarios/modi/([0-9]+)$ ?seccion=usuarios&oper=modi&id=$1 [L]
+
+RewriteRule ^usuarios$ index.php?seccion=usuarios [L]
+
+RewriteRule ^usuarios/([a-z]+)/([0-9]+)$ index.php?seccion=usuarios&oper=$1&id=$2 [L]
+
+
+RewriteRule ^usuarios/list/([0-9]+)  ?seccion=usuarios&oper=list&pagina=$1 [L]
+
+
