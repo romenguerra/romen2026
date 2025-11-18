@@ -6,9 +6,9 @@
         private mysqli $conexion;
 
         private string $host     = '127.0.0.1';
-        private string $usuario  = 'lanzarote';
-        private string $password = 'lanza.pass';
-        private string $baseDatos = 'lanzarote';
+        private string $usuario  = 'romen';
+        private string $password = '230904';
+        public  static string $baseDatos = 'gestion_usuarios';
 
         private function __construct()
         {
@@ -16,7 +16,7 @@
                  $this->host
                 ,$this->usuario
                 ,$this->password
-                ,$this->baseDatos
+                ,self::$baseDatos
             );
 
             if($this->conexion->connect_error){
