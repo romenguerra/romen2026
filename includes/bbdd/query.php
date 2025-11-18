@@ -20,10 +20,7 @@
             }
 
             //Si es un Select, guardamos el número de registros
-
-            if(gettype($this->resultado) == "boolean")
-                $this->total = 1;
-            elseif($this->resultado instanceof mysqli_result)
+            if($this->resultado instanceof mysqli_result)
                 $this->total = $this->resultado->num_rows;
             else
                 $this->total = $this->resultado->affected_rows;
