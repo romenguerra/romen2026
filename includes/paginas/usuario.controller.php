@@ -1,7 +1,10 @@
 <?php
 
 
-define('BOTON_ENVIAR',"<button type=\"submit\" class=\"btn btn-primary\">". Idioma::lit('enviar'.Campo::val('oper'))."</button>");
+if (Campo::val('modo') == 'ajax')
+    define('BOTON_ENVIAR',"<button onclick=\"fetchJSON('/usuarios/".Campo::val('oper')."/". Campo::val('id') ."?modo=ajax','formulario');return false\" class=\"btn btn-primary\">". Idioma::lit('enviar'.Campo::val('oper'))."</button>");
+else
+    define('BOTON_ENVIAR',"<button type=\"submit\" class=\"btn btn-primary\">". Idioma::lit('enviar'.Campo::val('oper'))."</button>");
 
 class UsuarioController
 {
@@ -12,7 +15,7 @@ class UsuarioController
     static function pintar()
     {
         $contenido = '';
-        $volver = "<a style=\"float:right\" href=\"/usuarios/\" class=\"btn btn-light\"><i class=\"bi bi-arrow-return-left\"></i> ".Idioma::lit('volver')."</a>";
+
 
 
 
@@ -40,15 +43,18 @@ class UsuarioController
         }
 
       
-        
+
+        if (Campo::val('modo') != 'ajax')
+        {
+            $h1cabecera = "<h1>". Idioma::lit('titulo'.Campo::val('oper'))." ". Idioma::lit(Campo::val('seccion')) ."</h1>";
+        }
 
       
         return "
         <div class=\"container contenido\">
         <section class=\"page-section usuarios\" id=\"usuarios\">
-            <h1>". Idioma::lit('titulo'.Campo::val('oper'))." ". Idioma::lit(Campo::val('seccion')) ."</h1>
+            {$h1cabecera}
             {$contenido}
-            {$volver}
         </section>
         </div>
         
@@ -98,13 +104,8 @@ class UsuarioController
 
     static function cons()
     {
-        $query = new Query("
-            SELECT *
-            FROM   usuarios
-            WHERE  id = '". Campo::val('id') ."'
-        ");
-
-        $registro = $query->recuperar();
+        $usuario = new Usuario();
+        $registro = $usuario->recuperar(Campo::val('id'));
 
         self::sincro_form_bbdd($registro);
 
@@ -119,25 +120,22 @@ class UsuarioController
         $disabled =" disabled=\"disabled\" ";
         if(!Campo::val('paso'))
         {
-            $query = new Query("
-                SELECT *
-                FROM   usuarios
-                WHERE  id = '". Campo::val('id') ."'
-            ");
-
-            $registro = $query->recuperar();
+            $usuario = new Usuario();
+            $registro = $usuario->recuperar(Campo::val('id'));
 
             self::sincro_form_bbdd($registro);
 
         }
         else
         {
-            $query = new Query("
-                UPDATE usuarios
-                SET  fecha_baja = CURRENT_DATE
-                WHERE id = '". Campo::val('id') ."';
-            
-            ");
+
+            $usuario = new Usuario();
+
+            $datos_actualizar = [];
+            $datos_actualizar['fecha_baja'] = date('Ymd');
+
+            $usuario->actualizar($datos_actualizar,Campo::val('id'));
+
             $mensaje_exito = '<p class="centrado alert alert-success" >' . Idioma::lit('operacion_exito') .  '</p>';
 
             $boton_enviar = '';
@@ -154,13 +152,9 @@ class UsuarioController
         $disabled='';
         if(!Campo::val('paso'))
         {
-            $query = new Query("
-                SELECT *
-                FROM   usuarios
-                WHERE  id = '". Campo::val('id') ."'
-            ");
+            $usuario = new Usuario();
+            $registro = $usuario->recuperar(Campo::val('id'));
 
-            $registro = $query->recuperar();
 
             self::sincro_form_bbdd($registro);
 
@@ -172,18 +166,17 @@ class UsuarioController
 
             if(!$numero_errores)
             {
+                $usuario = new Usuario();
 
+                $datos_actualizar = [];
+                $datos_actualizar['nick']      = Campo::val('nick');
+                $datos_actualizar['nombre']    = Campo::val('nombre');
+                $datos_actualizar['apellidos'] = Campo::val('apellidos');
+                $datos_actualizar['email']     = Campo::val('email');
+                $datos_actualizar['password']  = Campo::val('password');
 
-                $query = new Query("
-                    UPDATE usuarios
-                    SET  nick      = '". Campo::val('nick')      ."'
-                        ,nombre    = '". Campo::val('nombre')    ."'
-                        ,apellidos = '". Campo::val('apellidos') ."'
-                        ,email     = '". Campo::val('email')     ."'
-                        ,password  = '". Campo::val('password')  ."'
-                    WHERE id = '". Campo::val('id') ."';
-                
-                ");
+                $usuario->actualizar($datos_actualizar,Campo::val('id'));
+
                 $mensaje_exito = '<p class="centrado alert alert-success" >' . Idioma::lit('operacion_exito') .  '</p>';
 
                 $disabled =" disabled=\"disabled\" ";
@@ -227,25 +220,7 @@ class UsuarioController
                 $usuario = new Usuario();
                 $usuario->insertar($nuevo_usuario);
 
-                $query = new Query("
-                    INSERT INTO usuarios
-                    (
-                         nick        
-                        ,nombre      
-                        ,apellidos   
-                        ,email       
-                        ,password    
-                    )
-                    VALUES
-                    (
-                         '". Campo::val('nick')      ."'
-                        ,'". Campo::val('nombre')    ."'
-                        ,'". Campo::val('apellidos') ."'
-                        ,'". Campo::val('email')     ."'
-                        ,'". Campo::val('password')  ."'
-                    );
-                
-                ");
+              
                 $mensaje_exito = '<p class="centrado alert alert-success" >' . Idioma::lit('operacion_exito') .  '</p>';
 
                 $disabled =" disabled=\"disabled\" ";
@@ -272,34 +247,33 @@ class UsuarioController
         }
         $pagina++;
 
+        $usuario = new Usuario();
 
-        $query = new Query("
-            SELECT * 
-            FROM   usuarios
-            WHERE  fecha_baja > CURRENT_DATE
+        $datos_consulta = $usuario->get_rows([
+             'wheremayor' => [
+                'fecha_baja' => date('Ymd')
+            ]
+            ,'limit'  => LISTADO_TOTAL_POR_PAGINA
+            ,'offset' => $offset
+        ]);
 
-            ORDER BY nick
-            limit ". LISTADO_TOTAL_POR_PAGINA ."
-            offset {$offset}
-            
-
-        ");
-
+        
 
 
         $listado_usuarios= '';
-        while ($registro = $query->recuperar())
+        $total_registros = 0;
+        foreach($datos_consulta as $indice => $registro)
         {
 
             $botonera = "
-                <a href=\"/usuarios/cons/{$registro['id']}\" class=\"btn btn-secondary\"><i class=\"bi bi-search\"></i></a>
-                <a href=\"/usuarios/modi/{$registro['id']}\" class=\"btn btn-primary\"><i class=\"bi bi-pencil-square\"></i></a>
-                <a href=\"/usuarios/baja/{$registro['id']}\" class=\"btn btn-danger\"><i class=\"bi bi-trash\"></i></a>
+                <a onclick=\"fetchJSON('/usuarios/cons/{$registro['id']}?modo=ajax')\" data-bs-toggle=\"modal\" data-bs-target=\"#ventanaModal\" class=\"btn btn-secondary\"><i class=\"bi bi-search\"></i></a>
+                <a onclick=\"fetchJSON('/usuarios/modi/{$registro['id']}?modo=ajax')\" data-bs-toggle=\"modal\" data-bs-target=\"#ventanaModal\" class=\"btn btn-primary\"><i class=\"bi bi-pencil-square\"></i></a>
+                <a onclick=\"fetchJSON('/usuarios/baja/{$registro['id']}?modo=ajax')\" data-bs-toggle=\"modal\" data-bs-target=\"#ventanaModal\" class=\"btn btn-danger\"><i class=\"bi bi-trash\"></i></a>
             ";
 
             $listado_usuarios .= "
                 <tr>
-                    <th scope=\"row\">{$botonera}</th>
+                    <th style=\"white-space:nowrap\" scope=\"row\">{$botonera}</th>
                     <td>{$registro['nick']}</td>
                     <td>{$registro['nombre']}</td>
                     <td>{$registro['apellidos']}</td>
@@ -309,10 +283,11 @@ class UsuarioController
                 </tr>
             ";
 
+            $total_registros++;
         }
 
 
-        $barra_navegacion = Template::navegacion($query->total,$pagina);
+        $barra_navegacion = Template::navegacion($total_registros,$pagina);
 
 
         return "
@@ -333,8 +308,10 @@ class UsuarioController
             </tbody>
             </table>
             {$barra_navegacion}
-            <a href=\"/usuarios/alta\" class=\"btn btn-primary\"><i class=\"bi bi-file-earmark-plus\"></i> Alta usuario</a>
+            <a onclick=\"fetchJSON('/usuarios/alta/{$registro['id']}?modo=ajax')\" data-bs-toggle=\"modal\" data-bs-target=\"#ventanaModal\" class=\"btn btn-primary\"><i class=\"bi bi-file-earmark-plus\"></i> Alta usuario</a>
             ";
+            #<a href=\"/usuarios/alta\" class=\"btn btn-primary\"><i class=\"bi bi-file-earmark-plus\"></i> Alta usuario</a>
+
 
     }
 
