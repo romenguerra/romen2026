@@ -3,6 +3,7 @@ adios:adios
 portfolio:Portfolio
 acercade:Acerca de
 contacto:Contacto
+calendario:calendario
 titulo:Listado
 titulolist:Listado
 titulocons:Consulta
