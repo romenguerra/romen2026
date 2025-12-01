@@ -68,7 +68,7 @@ spl_autoload_register(function ($class) {
         case 'Usuario':
                 require_once "includes/modelos/usuario.php";
         break;
-        case 'Calendario':
+        case 'CalendarioController':
                 require_once "includes/paginas/calendario.controller.php";
         break;
     }
